@@ -1,3 +1,6 @@
-ca /var/lib/puppet/ssl/certs/ca.pem
-cert /var/lib/puppet/ssl/certs/<%= fqdn %>>.pem
-key /var/lib/puppet/ssl/private_keys/<%= fqdn %>>.pem
+dev tun
+tls-server
+
+ca /etc/puppet/ssl/certs/ca.pem
+cert /etc/puppet/ssl/certs/<%= fqdn %>>.pem
+key /etc/puppet/ssl/private_keys/<%= fqdn %>>.pem
