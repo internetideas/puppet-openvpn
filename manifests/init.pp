@@ -5,14 +5,6 @@ class openvpn {
             ensure => installed;
     }
 
-    service {
-        "openvpn":
-            ensure     => running,
-            hasrestart => true,
-            hasstatus  => true,
-            require    => [ File["/etc/default/openvpn"], File["/etc/openvpn/vpn.conf"] ];
-    }
-
     file {
         "/etc/openvpn":
             ensure  => directory,
