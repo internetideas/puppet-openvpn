@@ -10,4 +10,12 @@ define openvpn::client ($server) {
       require => File["/etc/openvpn"];
   }
 
+  service {
+    "openvpn":
+      ensure     => running,
+      hasrestart => true,
+      hasstatus  => true,
+      require    => [ File["/etc/default/openvpn"], File["/etc/openvpn/${title}.conf"] ];
+  }
+
 }

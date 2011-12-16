@@ -1,8 +1,16 @@
 class openvpn::server {
   include openvpn
 
+  service {
+    "openvpn":
+      ensure     => running,
+      hasrestart => true,
+      hasstatus  => true,
+      require    => [ File["/etc/default/openvpn"], File["/etc/openvpn/server.conf"] ];
+  }
+
   file {
-    "/etc/openvpn/vpn.conf":
+    "/etc/openvpn/server.conf":
       content => template("openvpn/server.conf.erb"),
       ensure  => present,
       owner   => openvpn,
