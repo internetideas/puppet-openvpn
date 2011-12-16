@@ -2,11 +2,11 @@ class openvpn::server {
   include openvpn
 
   file {
-    "/etc/openvpn/server.conf":
+    "/etc/openvpn/vpn.conf":
       content => template("openvpn/server.conf.erb"),
-      ensure => present,
-      owner => openvpn,
-      group => openvpn,
+      ensure  => present,
+      owner   => openvpn,
+      group   => openvpn,
       require => [ File["/etc/openvpn"], File["/etc/openvpn/keys/dh1024.pem"] ];
   }
 
@@ -27,8 +27,8 @@ class openvpn::server {
   file {
     "/etc/openvpn/keys/dh1024.pem":
       content => Exec['generate dh'],
-      ensure => present,
-      owner => openvpn,
-      group => openvpn
+      ensure  => present,
+      owner   => openvpn,
+      group   => openvpn
   }
 }

@@ -10,7 +10,7 @@ class openvpn {
             ensure     => running,
             hasrestart => true,
             hasstatus  => true,
-            require    => File["/etc/default/openvpn"];
+            require    => [ File["/etc/default/openvpn"], File["/etc/openvpn/vpn.conf"] ];
     }
 
     file {
