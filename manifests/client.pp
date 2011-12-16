@@ -1,4 +1,4 @@
-class openvpn::client($server) {
+define openvpn::client($server) {
   include openvpn
 
   file { "/etc/openvpn/client.conf":
