@@ -10,7 +10,7 @@ class openvpn {
             ensure     => running,
             hasrestart => true,
             hasstatus  => true,
-            require    => Exec["/etc/default/openvpn concatenation"];
+            require    => File["/etc/default/openvpn"];
     }
 
     file {
