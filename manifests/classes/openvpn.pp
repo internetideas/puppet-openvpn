@@ -29,4 +29,13 @@ class openvpn {
             notify  => Service["openvpn"],
             file    => "/etc/default/openvpn";
     }
+
+    user {
+        "openvpn":
+            ensure => present,
+            comment => "OpenVPN user created by puppet",
+            managehome => true,
+            shell   => "/bin/false"
+    }
+
 }
