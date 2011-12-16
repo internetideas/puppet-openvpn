@@ -1,4 +1,4 @@
-define openvpn::server {
+class openvpn::server {
   include openvpn
 
   file { "/etc/openvpn/server.conf":
