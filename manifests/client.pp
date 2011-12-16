@@ -1,7 +1,7 @@
 define openvpn::client ($server) {
   include openvpn
 
-  file { "/etc/openvpn/client.conf":
+  file { "/etc/openvpn/${title}.conf":
     content => template("openvpn/client.conf.erb"),
     ensure => present,
     owner => openvpn,
