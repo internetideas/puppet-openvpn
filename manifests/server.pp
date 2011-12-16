@@ -34,9 +34,10 @@ class openvpn::server {
 
   file {
     "/etc/openvpn/keys/dh1024.pem":
-      content => Exec['generate dh'],
       ensure  => present,
       owner   => openvpn,
-      group   => openvpn
+      group   => openvpn,
+      require => Exec['generate dh'];
+
   }
 }
