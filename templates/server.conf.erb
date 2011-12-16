@@ -1,7 +1,26 @@
 dev tun
-tls-server
+proto tcp
+#;tls-server
+
 dh /etc/openvpn/keys/dh1024.pem
 
 ca /etc/puppet/ssl/certs/ca.pem
 cert /etc/puppet/ssl/certs/<%= fqdn %>.pem
 key /etc/puppet/ssl/private_keys/<%= fqdn %>.pem
+
+server 192.168.0.0 255.255.255.0
+ifconfig-pool-persist server-ipp.txt
+
+client-config-dir server-clients
+client-to-client
+
+ping-timer-rem
+keepalive 1 30
+
+user openvpn
+group openvpn
+
+persist-key
+persist-tun
+
+status server-status.log

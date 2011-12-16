@@ -1,7 +1,23 @@
+client
 remote <%= server %> 1194
+resolv-retry infinite
+
+nobind
+
 dev tun
-tls-client
+proto tcp
+#;tls-client
 
 ca /etc/puppet/ssl/certs/ca.pem
 cert /etc/puppet/ssl/certs/<%= fqdn %>.pem
 key /etc/puppet/ssl/private_keys/<%= fqdn %>.pem
+
+keepalive 1 30
+
+user openvpn
+group openvpn
+
+persist-key
+persist-tun
+
+
